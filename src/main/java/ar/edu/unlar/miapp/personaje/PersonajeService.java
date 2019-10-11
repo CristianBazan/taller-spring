@@ -23,9 +23,13 @@ public class PersonajeService {
 	public void borrarPersonaje(Long id) {
 		personajeRepository.deleteById(id);
 	}
-	
-	public Personaje buscarPorId(Long id){
+
+	public Personaje buscarPorId(Long id) {
 		return personajeRepository.findById(id).get();
+	}
+
+	public List<Personaje> buscarPorNombreLike(String texto) {
+		return personajeRepository.findByNombreContaining(texto);
 	}
 
 }

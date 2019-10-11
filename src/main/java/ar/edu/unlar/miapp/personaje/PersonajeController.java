@@ -43,4 +43,10 @@ public class PersonajeController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/buscar")
+	public String search(Model model, String texto) {
+		model.addAttribute("personajes", personajeService.buscarPorNombreLike(texto));
+		return "list";
+	}
+
 }
