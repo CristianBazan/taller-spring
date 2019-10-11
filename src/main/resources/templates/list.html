@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Personajes de Comics</title>
+
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}">
+<!-- Font Awesome CSS -->
+<link href="../static/css/fontawesome.css" rel="stylesheet"
+	th:href="@{/css/fontawesome.css}">
+<link href="../static/css/solid.css" rel="stylesheet"
+	th:href="@{/css/solid.css}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<div>
+			<a href="/nuevo" class="btn btn-primary">Agregar Personaje</a>
+		</div>
+		<br />
+		<h2 th:if="${personajes.isEmpty()}">No hay personajes</h2>
+		<div th:if="${!personajes.isEmpty()}">
+			<h2>Listado de Personajes</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Nombre</th>
+						<th>Nombre Real</th>
+						<th>Bueno</th>
+						<th>Editar</th>
+						<th>Borrar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="personaje, orden : ${personajes}">
+						<td th:text="${orden.count}">
+						<td th:text="${personaje.nombre}">
+						<td th:text="${personaje.nombreReal}">
+						<td><i class="fas fa-times" th:if="${personaje.tipo}"></i> <i
+							class="fas fa-check" th:unless="${personaje.tipo}"></i></td>
+						<td><a th:href="@{/editar/{id}(id=${personaje.id})}"><i
+								class="fas fa-edit"></i></a></td>
+						<td><a th:href="@{/borrar/{id}(id=${personaje.id})}"><i
+								class="fas fa-trash-alt"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

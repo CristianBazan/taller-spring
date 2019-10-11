@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Personas</title>
+
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h2>Formulario Personaje</h2>
+		<br />
+		<form action="#" th:action="@{/guardar}" th:object="${personaje}"
+			method="post">
+
+			<input type="hidden" th:field="*{id}" name="id" id="id">
+
+			<div class="form-group">
+				<label for="nombre">Nombre</label> <input type="text"
+					class="form-control" id="nombre" th:field="*{nombre}" name="nombre">
+			</div>
+			<div class="form-group">
+				<label for="nombre">Nombre Real</label> <input type="text"
+					class="form-control" id="apellido" th:field="*{nombreReal}"
+					name="nombreReal">
+			</div>
+
+			<div class="form-group">
+				<div class="custom-control custom-radio">
+					<input type="radio" class="custom-control-input" th:field="*{tipo}"
+						id="customRadio" name="tipo" value="0"> <label
+						class="custom-control-label" for="customRadio">Bueno</label>
+				</div>
+				<div class="custom-control custom-radio">
+					<input type="radio" class="custom-control-input" th:field="*{tipo}"
+						id="customRadio2" name="tipo" value="1"> <label
+						class="custom-control-label" for="customRadio2">Malo</label>
+				</div>
+
+			</div>
+
+			<button type="submit" class="btn btn-success">Guardar</button>
+			<a href="/" class="btn btn-secondary">Cancelar</a>
+		</form>
+	</div>
+</body>
+</html>
